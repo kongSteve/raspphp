@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<head>
+    <title>RPi Web Server</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+        .container {
+            padding-bottom: 20px;
+        }
+        
+        img {
+            display: block;
+            height: 250px;
+            width: 200px;
+            margin-left: 460px;
+        }
+        
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cisco IoT Web Server</h1>
+
+    <div>
+
+    </div>
+    <div class="container">
+
+
+
+
+        <img src="pic_bulboff.gif" class="rounded" id="imgpin">
+
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-md-1 col-md-offset-5">
+
+            <a href="#" class="btn btn-block btn-lg btn-danger" role="button" value='0' id="btnoff">Turn off</a></div>
+        <div class="col-md-1 ">
+            <a href="#" class="btn btn-block btn-lg btn-success" role="button" value="1" id="btnon">Turn on</a>
+        </div>
+
+    </div>
+
+
+    <script>
+        $('document').ready(function() {
+
+            $('#btnoff').click(function() {
+                var val = $(this).val();
+                $.ajax({
+                    url: 'pinoff.php',
+                    type: 'POST',
+                    success: function(res) {
+                        $('#imgpin').attr('src', 'pic_bulboff.gif');
+                    },
+                    error: function(res) {
+                        console.log(res);
+                    }
+
+                });
+            });
+
+            $('#btnon').click(function() {
+                var val = $(this).val();
+                $.ajax({
+                    url: 'pinon.php',
+                    type: 'POST',
+                    success: function(res) {
+                        $('#imgpin').attr('src', 'pic_bulbon.gif');
+                    },
+                    error: function(res) {
+                        console.log(res);
+                    }
+
+                });
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+        });
+    </script>
+</body>
+
+</html>
