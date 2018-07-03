@@ -1,7 +1,7 @@
 <?php
 
-system("gpio -g mode 24 out");
-system("gpio -g write 24 0" );
+system("gpio -g mode 14 out");
+system("gpio -g write 14 0" );
 
 
 ?>
